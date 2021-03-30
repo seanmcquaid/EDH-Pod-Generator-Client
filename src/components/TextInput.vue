@@ -1,7 +1,7 @@
 <template>
   <label>
     {{ label }}
-    <input type="text" @change="onChange" :value="value" />
+    <input :type="type" @change="onChange" :value="value" :name="name" />
   </label>
 </template>
 
@@ -17,6 +17,14 @@ export default {
       required: true,
     },
     value: {
+      type: String,
+      required: false,
+    },
+    type: {
+      type: String,
+      required: true,
+    },
+    name: {
       type: String,
       required: false,
     },
