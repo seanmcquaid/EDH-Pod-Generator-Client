@@ -5,7 +5,23 @@
       :onChange="onChange"
       type="text"
       name="username"
+      label="Username"
     />
+    <TextInput
+      :value="password"
+      :onChange="onChange"
+      type="text"
+      name="password"
+      label="Password"
+    />
+    <TextInput
+      :value="confirmPassword"
+      :onChange="onChange"
+      type="text"
+      name="confirmPassword"
+      label="Confirm Password"
+    />
+    <Button type="submit">Submit</Button>
   </form>
 </template>
 
@@ -13,19 +29,23 @@
 import { reactive, toRefs } from '@vue/reactivity';
 // import { useStore } from 'vuex';
 import TextInput from '../../components/TextInput.vue';
+import Button from '../../components/Button.vue';
 export default {
-  components: { TextInput },
+  components: { TextInput, Button },
   setup() {
+    // const store = useStore();
+
     const state = reactive({
       username: '',
       password: '',
+      confirmPassword: '',
+      errorMessage: '',
     });
+
     const onChange = (event) => {
-      console.log(event.target);
       state[event.target.name] = event.target.value;
     };
 
-    // const store = useStore();
     const onSubmit = (event) => {
       event.preventDefault();
       console.log(state);
