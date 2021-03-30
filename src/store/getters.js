@@ -1,4 +1,7 @@
 const getters = {
+  isLoading: (state) => {
+    return state?.isLoading ?? false;
+  },
   isAuthenticated: (state) => {
     return state?.isAuthenticated ?? false;
   },
@@ -7,6 +10,9 @@ const getters = {
   },
   pods: (state) => {
     return state?.pods ?? [];
+  },
+  errorMessage: (state) => {
+    return state?.errorMessage ?? null;
   },
 };
 
