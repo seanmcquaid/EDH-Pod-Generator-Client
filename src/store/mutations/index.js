@@ -9,9 +9,6 @@ const mutations = {
     state.isAuthenticated = true;
     state.token = token;
   },
-  getPodsSuccess: (state, { pods }) => {
-    state.pods = pods;
-  },
   setErrorMessage: (state, { errorMessage }) => {
     state.errorMessage = errorMessage;
   },
