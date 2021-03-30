@@ -27,13 +27,16 @@
 
 <script>
 import { reactive, toRefs } from '@vue/reactivity';
-// import { useStore } from 'vuex';
+import { useStore } from 'vuex';
 import TextInput from '../../components/TextInput.vue';
 import Button from '../../components/Button.vue';
+import { REGISTER } from '../../store/actions/types';
+import { useRouter } from 'vue-router';
 export default {
   components: { TextInput, Button },
   setup() {
-    // const store = useStore();
+    const store = useStore();
+    const router = useRouter();
 
     const state = reactive({
       username: '',
@@ -48,8 +51,14 @@ export default {
 
     const onSubmit = (event) => {
       event.preventDefault();
-      console.log(state);
-      // store.dispatch();
+      const { username, password, confirmPassword } = state;
+      if (password !== confirmPassword) {
+        state.errorMessage =
+          "The two passwords don't match, please change them!";
+      }
+      store.dispatch(REGISTER, { username, password }).then(() => {
+        router.push('/userHome');
+      });
     };
 
     return {
