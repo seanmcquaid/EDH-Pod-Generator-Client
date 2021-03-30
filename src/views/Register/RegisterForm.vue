@@ -1,4 +1,5 @@
 <template>
+  <span data-testid="errorMessage">{{ errorMessage }}</span>
   <form @submit="onSubmit">
     <TextInput
       :value="username"
@@ -28,9 +29,9 @@
 <script>
 import { reactive, toRefs } from '@vue/reactivity';
 import { useStore } from 'vuex';
-import TextInput from '../../components/TextInput.vue';
-import Button from '../../components/Button.vue';
-import { REGISTER } from '../../store/actions/types';
+import TextInput from '@/components/TextInput.vue';
+import Button from '@/components/Button.vue';
+import { REGISTER } from '@/store/actions/types';
 import { useRouter } from 'vue-router';
 export default {
   components: { TextInput, Button },
@@ -55,6 +56,7 @@ export default {
       if (password !== confirmPassword) {
         state.errorMessage =
           "The two passwords don't match, please change them!";
+        return;
       }
       store.dispatch(REGISTER, { username, password }).then(() => {
         router.push('/userHome');

@@ -1,7 +1,13 @@
 <template>
   <label>
     {{ label }}
-    <input :type="type" @change="onChange" :value="value" :name="name" />
+    <input
+      :type="type"
+      @change="onChange"
+      :value="value"
+      :name="name"
+      :data-testid="label"
+    />
   </label>
 </template>
 

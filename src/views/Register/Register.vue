@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import H1 from '../../components/Typography/H1.vue';
-import PageLayout from '../../layouts/PageLayout.vue';
+import H1 from '@/components/Typography/H1.vue';
+import PageLayout from '@/layouts/PageLayout.vue';
 import RegisterForm from './RegisterForm.vue';
 export default {
   components: { PageLayout, H1, RegisterForm },
