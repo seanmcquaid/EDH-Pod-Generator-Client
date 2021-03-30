@@ -1,17 +1,17 @@
 const getters = {
-  isLoading: (state) => {
+  getIsLoading: (state) => {
     return state?.isLoading ?? false;
   },
-  isAuthenticated: (state) => {
+  getIsAuthenticated: (state) => {
     return state?.isAuthenticated ?? false;
   },
-  token: (state) => {
+  getToken: (state) => {
     return state?.token ?? null;
   },
-  pods: (state) => {
+  getPods: (state) => {
     return state?.pods ?? [];
   },
-  errorMessage: (state) => {
+  getErrorMessage: (state) => {
     return state?.errorMessage ?? null;
   },
 };
