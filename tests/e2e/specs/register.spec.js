@@ -17,7 +17,17 @@ describe('Register page', () => {
     );
   });
 
-  it("User will see error when their user info isn't valid", () => {});
+  it('Successfully redirects a user when provided with valid registration info', () => {
+    cy.get('[data-testid=Username]').type('username here');
+    cy.get('[data-testid=Password]').type('password');
+    cy.get('[data-testid="Confirm Password"]').type('password');
 
-  it('Successfully redirects a user when provided with valid registration info', () => {});
+    cy.intercept(`${Cypress.env('API_URL')}/users/register`, {
+      fixture: 'register.json',
+    });
+
+    cy.get('button').click();
+
+    cy.contains('h1', 'User Home');
+  });
 });
