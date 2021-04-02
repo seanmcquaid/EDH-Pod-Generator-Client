@@ -20,4 +20,23 @@ describe('Actions', () => {
 
     expect(result.token).toEqual('valid token here');
   });
+
+  it('login', async () => {
+    jest.spyOn(axios, 'post').mockResolvedValueOnce({
+      data: {
+        token: 'valid token here',
+      },
+    });
+
+    const commit = jest.fn();
+
+    const requestBody = {
+      username: 'Sean',
+      password: 'password',
+    };
+
+    const result = await actions.login({ commit }, requestBody);
+
+    expect(result.token).toEqual('valid token here');
+  });
 });
