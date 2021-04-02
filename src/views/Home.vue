@@ -6,8 +6,8 @@
     <main>
       <P>A convenient way to create EDH pods with your friends!</P>
       <div>
-        <LinkButton to="/login">Login</LinkButton>
-        <LinkButton to="/register">Register</LinkButton>
+        <LinkButton route="/login">Login</LinkButton>
+        <LinkButton route="/register">Register</LinkButton>
       </div>
     </main>
   </PageLayout>
