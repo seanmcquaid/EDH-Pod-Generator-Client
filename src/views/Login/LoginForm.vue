@@ -44,12 +44,8 @@ export default {
 
     const onSubmit = (event) => {
       event.preventDefault();
-      const { username, password, confirmPassword } = state;
-      if (password !== confirmPassword) {
-        state.errorMessage =
-          "The two passwords don't match, please change them!";
-        return;
-      }
+      const { username, password } = state;
+
       store.dispatch(LOGIN, { username, password }).then(() => {
         router.push('/userHome');
       });
