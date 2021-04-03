@@ -46,9 +46,12 @@ export default {
       event.preventDefault();
       const { username, password } = state;
 
-      store.dispatch(LOGIN, { username, password }).then(() => {
-        router.push('/userHome');
-      });
+      store
+        .dispatch(LOGIN, { username, password })
+        .then(() => {
+          router.push('/userHome');
+        })
+        .catch((err) => console.log(err));
     };
 
     return {

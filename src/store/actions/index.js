@@ -20,9 +20,12 @@ const actions = {
         return Promise.resolve({ token });
       })
       .catch((err) => {
-        console.log(err);
-        commit(SET_ERROR_MESSAGE, err);
-        return Promise.reject();
+        const errorMessage =
+          err?.response?.data?.errorMessage ??
+          'There was a problem registering';
+
+        commit(SET_ERROR_MESSAGE, { errorMessage });
+        return Promise.reject(Object.entries(err));
       })
       .finally(() => {
         commit(SET_NOT_LOADING);
@@ -41,9 +44,11 @@ const actions = {
         return Promise.resolve({ token });
       })
       .catch((err) => {
-        console.log(err);
-        commit(SET_ERROR_MESSAGE, err);
-        return Promise.reject();
+        const errorMessage =
+          err?.response?.data?.errorMessage ?? 'There was a problem logging in';
+
+        commit(SET_ERROR_MESSAGE, { errorMessage });
+        return Promise.reject(Object.entries(err));
       })
       .finally(() => {
         commit(SET_NOT_LOADING);

@@ -58,9 +58,12 @@ export default {
           "The two passwords don't match, please change them!";
         return;
       }
-      store.dispatch(REGISTER, { username, password }).then(() => {
-        router.push('/userHome');
-      });
+      store
+        .dispatch(REGISTER, { username, password })
+        .then(() => {
+          router.push('/userHome');
+        })
+        .catch((err) => console.log(err));
     };
 
     return {
