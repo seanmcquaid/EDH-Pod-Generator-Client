@@ -36,6 +36,7 @@ import Button from '@/components/Button.vue';
 import { REGISTER } from '@/store/actions/types';
 import { useRouter } from 'vue-router';
 import useErrorMessage from '@/composables/useErrorMessage';
+
 export default {
   components: { TextInput, Button },
   setup() {
@@ -56,6 +57,7 @@ export default {
 
     const onSubmit = (event) => {
       event.preventDefault();
+      state.errorMessage = '';
       const { username, password, confirmPassword } = state;
       if (password !== confirmPassword) {
         state.errorMessage =
