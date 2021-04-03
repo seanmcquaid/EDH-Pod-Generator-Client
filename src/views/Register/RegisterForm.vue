@@ -1,5 +1,7 @@
 <template>
-  <span data-testid="errorMessage">{{ errorMessage }}</span>
+  <span data-testid="errorMessage">{{
+    globalErrorMessage.length > 0 ? globalErrorMessage : errorMessage
+  }}</span>
   <form @submit="onSubmit">
     <TextInput
       :value="username"
@@ -33,11 +35,13 @@ import TextInput from '@/components/TextInput.vue';
 import Button from '@/components/Button.vue';
 import { REGISTER } from '@/store/actions/types';
 import { useRouter } from 'vue-router';
+import useErrorMessage from '@/composables/useErrorMessage';
 export default {
   components: { TextInput, Button },
   setup() {
     const store = useStore();
     const router = useRouter();
+    const globalErrorMessage = useErrorMessage();
 
     const state = reactive({
       username: '',
@@ -63,13 +67,16 @@ export default {
         .then(() => {
           router.push('/userHome');
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err);
+        });
     };
 
     return {
       onSubmit,
       onChange,
       ...toRefs(state),
+      globalErrorMessage,
     };
   },
 };
