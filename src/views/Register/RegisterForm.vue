@@ -1,5 +1,7 @@
 <template>
-  <span data-testid="errorMessage">{{ errorMessage }}</span>
+  <span data-testid="errorMessage">{{
+    globalErrorMessage.length > 0 ? globalErrorMessage : errorMessage
+  }}</span>
   <form @submit="onSubmit">
     <TextInput
       :value="username"
@@ -33,11 +35,14 @@ import TextInput from '@/components/TextInput.vue';
 import Button from '@/components/Button.vue';
 import { REGISTER } from '@/store/actions/types';
 import { useRouter } from 'vue-router';
+import useErrorMessage from '@/composables/useErrorMessage';
+
 export default {
   components: { TextInput, Button },
   setup() {
     const store = useStore();
     const router = useRouter();
+    const globalErrorMessage = useErrorMessage();
 
     const state = reactive({
       username: '',
@@ -52,21 +57,28 @@ export default {
 
     const onSubmit = (event) => {
       event.preventDefault();
+      state.errorMessage = '';
       const { username, password, confirmPassword } = state;
       if (password !== confirmPassword) {
         state.errorMessage =
           "The two passwords don't match, please change them!";
         return;
       }
-      store.dispatch(REGISTER, { username, password }).then(() => {
-        router.push('/userHome');
-      });
+      store
+        .dispatch(REGISTER, { username, password })
+        .then(() => {
+          router.push('/userHome');
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     };
 
     return {
       onSubmit,
       onChange,
       ...toRefs(state),
+      globalErrorMessage,
     };
   },
 };
