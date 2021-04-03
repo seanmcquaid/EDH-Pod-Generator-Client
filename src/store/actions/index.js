@@ -49,6 +49,9 @@ const actions = {
         commit(SET_NOT_LOADING);
       });
   },
+  clearErrorMessage: ({ commit }) => {
+    commit(SET_ERROR_MESSAGE, { errorMessage: '' });
+  },
 };
 
 export default actions;

@@ -3,6 +3,8 @@ import Home from '../views/Home.vue';
 import Register from '../views/Register/Register.vue';
 import Login from '../views/Login/Login.vue';
 import UserHome from '../views/UserHome.vue';
+import store from '../store';
+import { CLEAR_ERROR_MESSAGE } from '../store/actions/types';
 
 const routes = [
   {
@@ -30,6 +32,12 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+});
+
+router.afterEach(() => {
+  if (store.state.errorMessage !== '') {
+    store.dispatch(CLEAR_ERROR_MESSAGE);
+  }
 });
 
 export default router;
