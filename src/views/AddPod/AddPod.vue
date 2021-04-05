@@ -14,7 +14,9 @@
           Confirm Name
         </Button>
       </div>
-      <div v-else></div>
+      <div v-else>
+        <AddPodMember :podName="podName" />
+      </div>
     </main>
   </PageLayout>
 </template>
@@ -25,8 +27,9 @@ import H1 from '../../components/Typography/H1.vue';
 import PageLayout from '../../layouts/PageLayout.vue';
 import TextInput from '../../components/TextInput.vue';
 import Button from '../../components/Button.vue';
+import AddPodMember from './AddPodMember/AddPodMember';
 export default {
-  components: { PageLayout, H1, TextInput, Button },
+  components: { PageLayout, H1, TextInput, Button, AddPodMember },
   setup() {
     const state = reactive({
       podName: '',
