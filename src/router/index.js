@@ -3,6 +3,7 @@ import Home from '../views/Home.vue';
 import Register from '../views/Register/Register.vue';
 import Login from '../views/Login/Login.vue';
 import UserHome from '../views/UserHome.vue';
+import AddPod from '../views/AddPod/AddPod.vue';
 import store from '../store';
 import { CLEAR_ERROR_MESSAGE } from '../store/actions/types';
 
@@ -26,6 +27,11 @@ const routes = [
     path: '/userHome',
     name: 'UserHome',
     component: UserHome,
+  },
+  {
+    path: '/addPod',
+    name: 'AddPod',
+    component: AddPod,
   },
 ];
 
