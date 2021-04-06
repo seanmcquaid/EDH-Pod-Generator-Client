@@ -16,6 +16,7 @@
       </div>
       <div v-else>
         <AddPodMember :podName="podName" />
+        <PodMembers :podName="podName" />
       </div>
     </main>
   </PageLayout>
@@ -28,8 +29,9 @@ import PageLayout from '../../layouts/PageLayout.vue';
 import TextInput from '../../components/TextInput.vue';
 import Button from '../../components/Button.vue';
 import AddPodMember from './AddPodMember/AddPodMember';
+import PodMembers from './AddPodMember/PodMembers.vue';
 export default {
-  components: { PageLayout, H1, TextInput, Button, AddPodMember },
+  components: { PageLayout, H1, TextInput, Button, AddPodMember, PodMembers },
   setup() {
     const state = reactive({
       podName: '',
