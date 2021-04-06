@@ -1,19 +1,20 @@
 <template>
   <span>{{ podName }}</span>
-  <form>
+  <span>{{ spellTableUrl }}</span>
+  <form @submit.prevent="onSubmit">
     <TextInput
       type="text"
-      :onChange="podNameOnChange"
-      :value="podName"
-      name="podName"
-      label="Pod Name"
+      :onChange="onChange"
+      :value="memberName"
+      name="memberName"
+      label="Member Name"
     />
     <TextInput
       type="text"
-      :onChange="podNameOnChange"
-      :value="podName"
-      name="podName"
-      label="Pod Name"
+      :onChange="onChange"
+      :value="spellTableUrl"
+      name="spellTableUrl"
+      label="Spell Table Link"
     />
     <Button type="submit">Add Member</Button>
   </form>
@@ -35,16 +36,30 @@ export default {
       type: String,
       required: true,
     },
+    spellTableUrl: {
+      type: String,
+      required: true,
+    },
   },
   setup() {
-    // const podName = computed(() => props.podName);
+    // const name = computed(() => props.podName);
     const state = reactive({
       memberName: '',
       memberEmail: '',
     });
 
+    const onChange = (event) => {
+      state[event.target.name] = event.target.value;
+    };
+
+    const onSubmit = () => {
+      // const payload = { name };
+    };
+
     return {
       ...toRefs(state),
+      onChange,
+      onSubmit,
     };
   },
 };

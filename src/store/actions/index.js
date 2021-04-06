@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {
   AUTH_SUCCESS,
+  PODS_SUCCESS,
   SET_ERROR_MESSAGE,
   SET_LOADING,
   SET_NOT_LOADING,
@@ -47,6 +48,40 @@ const actions = {
         const errorMessage =
           err?.response?.data?.errorMessage ?? 'There was a problem logging in';
 
+        commit(SET_ERROR_MESSAGE, { errorMessage });
+        return Promise.reject(Object.entries(err));
+      })
+      .finally(() => {
+        commit(SET_NOT_LOADING);
+      });
+  },
+  addPodMember: (
+    { commit, state },
+    { name, member, memberEmail, spellTableUrl }
+  ) => {
+    commit(SET_LOADING);
+    const body = {
+      name,
+      member,
+      memberEmail,
+      spellTableUrl,
+    };
+    const config = {
+      headers: {
+        Authorization: state.token,
+      },
+    };
+    return axios
+      .post(`${process.env.VUE_APP_API_URL}/pods/member`, body, config)
+      .then(({ data }) => {
+        const { pods } = data;
+        commit(PODS_SUCCESS, { pods });
+        return Promise.resolve({ pods });
+      })
+      .catch((err) => {
+        const errorMessage =
+          err?.response?.data?.errorMessage ??
+          'There was an issue adding a pod member';
         commit(SET_ERROR_MESSAGE, { errorMessage });
         return Promise.reject(Object.entries(err));
       })

@@ -18,11 +18,16 @@
             name="spellTableUrl"
             label="Spell Table Link"
           />
-          <Button type="submit"> Confirm </Button>
+          <Button
+            type="submit"
+            :disabled="podName.length > 0 && spellTableUrl.length > 0"
+          >
+            Confirm
+          </Button>
         </form>
       </div>
       <div v-else>
-        <AddPodMemberForm :podName="podName" />
+        <AddPodMemberForm :podName="podName" :spellTableUrl="spellTableUrl" />
         <PodMembers :podName="podName" />
       </div>
     </main>
