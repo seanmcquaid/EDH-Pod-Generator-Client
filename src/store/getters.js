@@ -14,6 +14,8 @@ const getters = {
   getErrorMessage: (state) => {
     return state?.errorMessage ?? null;
   },
+  getPodByName: (state) => (name) =>
+    state.pods.filter((pod) => pod.name === name)[0] ?? [],
 };
 
 export default getters;

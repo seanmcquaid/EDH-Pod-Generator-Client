@@ -1,9 +1,13 @@
 <template>
-  <ul></ul>
+  <ul>
+    <li></li>
+  </ul>
 </template>
 
 <script>
-export default {};
+export default {
+  setup() {},
+};
 </script>
 
 <style></style>
