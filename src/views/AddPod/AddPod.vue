@@ -3,6 +3,7 @@
     <header><H1>Add Pod</H1></header>
     <main>
       <div v-if="!isConfirmed">
+        <span data-testid="errorMessage">{{ errorMessage }}</span>
         <form @submit.prevent="onSubmit">
           <TextInput
             type="text"
@@ -18,12 +19,7 @@
             name="spellTableUrl"
             label="Spell Table Link"
           />
-          <Button
-            type="submit"
-            :disabled="spellTableUrl.length === 0 || podName.length === 0"
-          >
-            Confirm
-          </Button>
+          <Button type="submit"> Confirm </Button>
         </form>
       </div>
       <div v-else>
@@ -56,6 +52,7 @@ export default {
       podName: '',
       spellTableUrl: '',
       isConfirmed: false,
+      errorMessage: '',
     });
 
     const onChange = (event) => {
@@ -63,6 +60,11 @@ export default {
     };
 
     const onSubmit = () => {
+      state.errorMessage = '';
+      if (state.podName.length === 0 || state.spellTableUrl.length === 0) {
+        state.errorMessage = 'Please enter information in both fields!';
+        return;
+      }
       state.isConfirmed = true;
     };
 
