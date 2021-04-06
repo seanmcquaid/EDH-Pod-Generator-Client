@@ -2,17 +2,24 @@
   <PageLayout>
     <header><H1>Add Pod</H1></header>
     <main>
-      <div v-if="!isNameConfirmed">
-        <TextInput
-          type="text"
-          :onChange="podNameOnChange"
-          :value="podName"
-          name="podName"
-          label="Pod Name"
-        />
-        <Button type="button" :onClick="confirmNameButtonOnClick">
-          Confirm Name
-        </Button>
+      <div v-if="!isConfirmed">
+        <form @submit.prevent="onSubmit">
+          <TextInput
+            type="text"
+            :onChange="onChange"
+            :value="podName"
+            name="podName"
+            label="Pod Name"
+          />
+          <TextInput
+            type="text"
+            :onChange="onChange"
+            :value="spellTableUrl"
+            name="spellTableUrl"
+            label="Spell Table Link"
+          />
+          <Button type="submit"> Confirm </Button>
+        </form>
       </div>
       <div v-else>
         <AddPodMemberForm :podName="podName" />
@@ -42,21 +49,22 @@ export default {
   setup() {
     const state = reactive({
       podName: '',
-      isNameConfirmed: false,
+      spellTableUrl: '',
+      isConfirmed: false,
     });
 
-    const podNameOnChange = (event) => {
+    const onChange = (event) => {
       state[event.target.name] = event.target.value;
     };
 
-    const confirmNameButtonOnClick = () => {
+    const onSubmit = () => {
       state.isNameConfirmed = true;
     };
 
     return {
       ...toRefs(state),
-      podNameOnChange,
-      confirmNameButtonOnClick,
+      onChange,
+      onSubmit,
     };
   },
 };
