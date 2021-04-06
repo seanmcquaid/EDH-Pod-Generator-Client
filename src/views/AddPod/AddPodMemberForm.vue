@@ -7,24 +7,26 @@
       :onChange="onChange"
       :value="memberName"
       name="memberName"
-      label="Member Name"
+      label="Name"
     />
     <TextInput
       type="text"
       :onChange="onChange"
-      :value="spellTableUrl"
-      name="spellTableUrl"
-      label="Spell Table Link"
+      :value="memberEmail"
+      name="memberEmail"
+      label="Email"
     />
     <Button type="submit">Add Member</Button>
   </form>
 </template>
 
 <script>
-// import { computed } from '@vue/runtime-core';
+import { computed } from '@vue/runtime-core';
 import TextInput from '../../components/TextInput.vue';
 import Button from '../../components/Button.vue';
 import { reactive, toRefs } from '@vue/reactivity';
+import { useStore } from 'vuex';
+import { ADD_POD_MEMBER } from '../../store/actions/types';
 
 export default {
   components: {
@@ -41,8 +43,10 @@ export default {
       required: true,
     },
   },
-  setup() {
-    // const name = computed(() => props.podName);
+  setup(props) {
+    const store = useStore();
+    const name = computed(() => props.podName);
+    const spellTableUrl = computed(() => props.spellTableUrl);
     const state = reactive({
       memberName: '',
       memberEmail: '',
@@ -53,7 +57,13 @@ export default {
     };
 
     const onSubmit = () => {
-      // const payload = { name };
+      const payload = {
+        name,
+        member: state.memberName,
+        memberEmail: state.memberEmail,
+        spellTableUrl,
+      };
+      store.dispatch(ADD_POD_MEMBER, payload);
     };
 
     return {

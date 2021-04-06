@@ -18,12 +18,7 @@
             name="spellTableUrl"
             label="Spell Table Link"
           />
-          <Button
-            type="submit"
-            :disabled="podName.length > 0 && spellTableUrl.length > 0"
-          >
-            Confirm
-          </Button>
+          <Button type="submit"> Confirm </Button>
         </form>
       </div>
       <div v-else>
@@ -63,7 +58,7 @@ export default {
     };
 
     const onSubmit = () => {
-      state.isNameConfirmed = true;
+      state.isConfirmed = true;
     };
 
     return {
