@@ -1,7 +1,7 @@
 <template>
   <span>{{ podName }}</span>
   <span>{{ spellTableUrl }}</span>
-  <form @submit.prevent="onSubmit">
+  <form @submit.prevent="onSubmit" data-testid="AddPodMemberForm">
     <TextInput
       type="text"
       :onChange="onChange"
