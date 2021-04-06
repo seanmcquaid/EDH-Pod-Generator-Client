@@ -33,5 +33,17 @@ describe('Add Pod Page', () => {
     cy.get('[data-testid="AddPodMemberForm"]').should('be.visible');
   });
 
-  it('Successfully adding a pod member displays the added pod member', () => {});
+  it('Successfully adding a pod member displays the added pod member', () => {
+    cy.get('[data-testid="Pod Name"]').type('Pod #1');
+    cy.get('[data-testid="Spell Table Link"]').type('www.spelltable.com');
+    cy.get('button').click();
+
+    cy.intercept(`${Cypress.env('API_URL')}/pods/member`, {
+      fixture: 'addPodMember.json',
+    });
+
+    cy.get('[data-testid=Name]').type('Sean');
+    cy.get('[data-testid=Email]').type('sean@mail.com');
+    cy.get('button').click();
+  });
 });
