@@ -46,6 +46,6 @@ describe('Add Pod Page', () => {
     cy.get('[data-testid=Email]').type('sean@mail.com');
     cy.get('button').click();
 
-    cy.get('div > ul > li').should('be.visible');
+    cy.get('h1').should('have.text', 'Pod Info');
   });
 });

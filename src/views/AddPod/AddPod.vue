@@ -23,8 +23,10 @@
         </form>
       </div>
       <div v-else>
-        <AddPodMemberForm :podName="podName" :spellTableUrl="spellTableUrl" />
-        <PodMembers :podName="podName" />
+        <AddInitialPodMemberForm
+          :podName="podName"
+          :spellTableUrl="spellTableUrl"
+        />
       </div>
     </main>
   </PageLayout>
@@ -36,16 +38,14 @@ import H1 from '../../components/Typography/H1.vue';
 import PageLayout from '../../layouts/PageLayout.vue';
 import TextInput from '../../components/TextInput.vue';
 import Button from '../../components/Button.vue';
-import AddPodMemberForm from './AddPodMemberForm';
-import PodMembers from './PodMembers.vue';
+import AddInitialPodMemberForm from './AddInitialPodMemberForm';
 export default {
   components: {
     PageLayout,
     H1,
     TextInput,
     Button,
-    AddPodMemberForm,
-    PodMembers,
+    AddInitialPodMemberForm,
   },
   setup() {
     const state = reactive({

@@ -27,6 +27,7 @@ import Button from '../../components/Button.vue';
 import { reactive, toRefs } from '@vue/reactivity';
 import { useStore } from 'vuex';
 import { ADD_POD_MEMBER } from '../../store/actions/types';
+import { useRouter } from 'vue-router';
 
 export default {
   components: {
@@ -45,6 +46,7 @@ export default {
   },
   setup(props) {
     const store = useStore();
+    const router = useRouter();
     const name = computed(() => props.podName);
     const spellTableUrl = computed(() => props.spellTableUrl);
     const state = reactive({
@@ -63,7 +65,9 @@ export default {
         memberEmail: state.memberEmail,
         spellTableUrl: spellTableUrl.value,
       };
-      store.dispatch(ADD_POD_MEMBER, payload);
+      store.dispatch(ADD_POD_MEMBER, payload).then(() => {
+        router.push(`/podInfo/${props.podName}`);
+      });
     };
 
     return {
