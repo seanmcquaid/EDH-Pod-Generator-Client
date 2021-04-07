@@ -12,6 +12,9 @@ const mutations = {
   setErrorMessage: (state, { errorMessage }) => {
     state.errorMessage = errorMessage;
   },
+  podsSuccess: (state, { pods }) => {
+    state.pods = pods;
+  },
 };
 
 export default mutations;
