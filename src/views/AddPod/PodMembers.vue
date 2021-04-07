@@ -1,11 +1,11 @@
 <template>
   <ul>
     <li
-      v-for="podMemberInfo in podMembers"
-      :key="podMemberInfo.id"
+      v-for="(podMemberInfo, key) of podMembers"
+      :key="key"
       :data-testid="podMemberInfo.member"
     >
-      <span> {{ podMemberInfo.member }} </span>
+      <span> {{ JSON.stringify(podMemberInfo) }} </span>
     </li>
   </ul>
 </template>
@@ -22,8 +22,12 @@ export default {
   },
   setup(props) {
     const store = useStore();
-    const podMembers = computed(() =>
-      store.getters.getPodByName(props.podName)
+    const podInfo = computed(() => store.state.pods);
+    const podMembers = computed(
+      () =>
+        podInfo.value.filter((pod) =>
+          pod.filter((podInfo) => podInfo.name === props.podName)
+        )[0] ?? []
     );
 
     return {
