@@ -58,10 +58,10 @@ export default {
 
     const onSubmit = () => {
       const payload = {
-        name,
+        name: name.value,
         member: state.memberName,
         memberEmail: state.memberEmail,
-        spellTableUrl,
+        spellTableUrl: spellTableUrl.value,
       };
       store.dispatch(ADD_POD_MEMBER, payload);
     };
