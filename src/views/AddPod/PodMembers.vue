@@ -1,7 +1,11 @@
 <template>
   <ul>
-    <li v-for="podMember of podMembers" :key="podMember.id">
-      {{ podMember.member }}
+    <li
+      v-for="podMemberInfo in podMembers"
+      :key="podMemberInfo.id"
+      :data-testid="podMemberInfo.member"
+    >
+      <span> {{ podMemberInfo.member }} </span>
     </li>
   </ul>
 </template>
