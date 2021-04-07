@@ -17,7 +17,7 @@ const getters = {
   getPodByName: (state) => (name) =>
     state.pods.filter((pod) =>
       pod.filter((podInfo) => podInfo.name === name)
-    ) ?? [],
+    )[0] ?? [],
 };
 
 export default getters;

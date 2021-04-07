@@ -22,12 +22,8 @@ export default {
   },
   setup(props) {
     const store = useStore();
-    const podInfo = computed(() => store.state.pods);
-    const podMembers = computed(
-      () =>
-        podInfo.value.filter((pod) =>
-          pod.filter((podInfo) => podInfo.name === props.podName)
-        )[0] ?? []
+    const podMembers = computed(() =>
+      store.getters.getPodByName(props.podName)
     );
 
     return {

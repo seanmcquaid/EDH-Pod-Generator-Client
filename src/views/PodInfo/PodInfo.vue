@@ -1,6 +1,7 @@
 <template>
   <PageLayout>
     <header><H1>Pod Info</H1></header>
+    <main></main>
   </PageLayout>
 </template>
 
