@@ -21,7 +21,7 @@ const getters = {
   getPodSpellTableUrlByName: (state) => (name) =>
     state.pods.filter((pod) =>
       pod.filter((podInfo) => podInfo.name === name)
-    )[0].spellTableUrl ?? '',
+    )[0]?.spellTableUrl ?? '',
 };
 
 export default getters;
