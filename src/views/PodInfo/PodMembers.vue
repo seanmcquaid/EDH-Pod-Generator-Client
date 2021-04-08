@@ -11,8 +11,9 @@
 </template>
 
 <script>
-import { computed } from '@vue/runtime-core';
+import { computed, onMounted } from '@vue/runtime-core';
 import { useStore } from 'vuex';
+import { GET_PODS } from '../../store/actions/types';
 export default {
   props: {
     podName: {
@@ -25,6 +26,10 @@ export default {
     const podMembers = computed(() =>
       store.getters.getPodByName(props.podName)
     );
+
+    onMounted(() => {
+      store.dispatch(GET_PODS);
+    });
 
     return {
       podMembers,

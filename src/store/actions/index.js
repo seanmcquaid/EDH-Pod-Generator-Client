@@ -92,6 +92,31 @@ const actions = {
   clearErrorMessage: ({ commit }) => {
     commit(SET_ERROR_MESSAGE, { errorMessage: '' });
   },
+  getPods: ({ commit, state }) => {
+    commit(SET_LOADING);
+    const config = {
+      headers: {
+        Authorization: state.token,
+      },
+    };
+    return axios
+      .get(`${process.env.VUE_APP_API_URL}/pods`, config)
+      .then(({ data }) => {
+        const { pods } = data;
+        commit(PODS_SUCCESS, { pods });
+        return Promise.resolve({ pods });
+      })
+      .catch((err) => {
+        const errorMessage =
+          err?.response?.data?.errorMessage ??
+          'There was an issue getting all pods';
+        commit(SET_ERROR_MESSAGE, { errorMessage });
+        return Promise.reject(Object.entries(err));
+      })
+      .finally(() => {
+        commit(SET_NOT_LOADING);
+      });
+  },
 };
 
 export default actions;
