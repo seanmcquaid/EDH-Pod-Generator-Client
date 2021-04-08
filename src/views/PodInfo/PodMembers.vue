@@ -14,18 +14,14 @@
 import { computed, onMounted } from '@vue/runtime-core';
 import { useStore } from 'vuex';
 import { GET_PODS } from '../../store/actions/types';
+import { useRouter } from 'vue-router';
 export default {
-  props: {
-    podName: {
-      type: String,
-      required: true,
-    },
-  },
-  setup(props) {
+  setup() {
+    const router = useRouter();
+    const podName = router.currentRoute.value.params.name;
+
     const store = useStore();
-    const podMembers = computed(() =>
-      store.getters.getPodByName(props.podName)
-    );
+    const podMembers = computed(() => store.getters.getPodByName(podName));
 
     onMounted(() => {
       store.dispatch(GET_PODS);
