@@ -39,7 +39,7 @@ describe('Add Pod Page', () => {
     cy.get('button').click();
 
     cy.intercept(`${Cypress.env('API_URL')}/pods/member`, {
-      fixture: 'addPodMember.json',
+      fixture: 'addOnePodMember.json',
     });
 
     cy.get('[data-testid=Name]').type('Sean');

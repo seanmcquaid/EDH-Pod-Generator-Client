@@ -9,7 +9,7 @@ describe('Pod Info Page', () => {
 
   it('Displays new member when added', () => {
     cy.intercept(`${Cypress.env('API_URL')}/pods/member`, {
-      fixture: 'addPodMember.json',
+      fixture: 'addAnotherPodMember.json',
     });
 
     cy.get('[data-testid=Name]').type('Terell');
