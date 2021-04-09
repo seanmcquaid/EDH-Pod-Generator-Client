@@ -44,6 +44,11 @@ describe('Add Pod Page', () => {
 
     cy.get('[data-testid=Name]').type('Sean');
     cy.get('[data-testid=Email]').type('sean@mail.com');
+
+    cy.intercept(`${Cypress.env('API_URL')}/pods`, {
+      fixture: 'getPods.json',
+    });
+
     cy.get('button').click();
 
     cy.get('h1').should('have.text', 'Pod Info');
