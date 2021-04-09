@@ -7,7 +7,15 @@
         "member": "Sean",
         "memberEmail": "sean@mail.com",
         "spellTableUrl": "www.spelltable.com",
-        "name": "Pod #1"
+        "name": "Pod1"
+      },
+      {
+        "id": 2,
+        "owner": "sean",
+        "member": "Terell",
+        "memberEmail": "terell@mail.com",
+        "spellTableUrl": "www.spelltable.com",
+        "name": "Pod1"
       }
     ]
   ]
