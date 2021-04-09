@@ -1,4 +1,5 @@
 <template>
+  <LinkButton :route="`/generatePods/${podName}`">Generate Pods</LinkButton>
   <ul>
     <li
       v-for="(podMemberInfo, key) of podMembers"
@@ -11,27 +12,27 @@
 </template>
 
 <script>
-import { computed } from '@vue/runtime-core';
+import { computed, onMounted } from '@vue/runtime-core';
 import { useStore } from 'vuex';
+import { GET_PODS } from '../../store/actions/types';
+import { useRouter } from 'vue-router';
+import LinkButton from '../../components/LinkButton.vue';
 export default {
-  props: {
-    podName: {
-      type: String,
-      required: true,
-    },
-  },
-  setup(props) {
+  components: { LinkButton },
+  setup() {
+    const router = useRouter();
+    const podName = router.currentRoute.value.params.name;
+
     const store = useStore();
-    const podInfo = computed(() => store.state.pods);
-    const podMembers = computed(
-      () =>
-        podInfo.value.filter((pod) =>
-          pod.filter((podInfo) => podInfo.name === props.podName)
-        )[0] ?? []
-    );
+    const podMembers = computed(() => store.getters.getPodByName(podName));
+
+    onMounted(() => {
+      store.dispatch(GET_PODS);
+    });
 
     return {
       podMembers,
+      podName,
     };
   },
 };
