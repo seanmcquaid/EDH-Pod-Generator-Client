@@ -21,7 +21,6 @@ export default {
     AddPodMemberForm,
     PodMembers,
   },
-  setup() {},
 };
 </script>
 
