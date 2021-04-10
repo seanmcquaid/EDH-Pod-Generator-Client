@@ -1,14 +1,12 @@
 describe('Pod Info Page', () => {
-  beforeEach(() => {
-    cy.intercept(`${Cypress.env('API_URL')}/pods`, {
+  it('Displays new member when added', () => {
+    cy.intercept('GET', `${Cypress.env('API_URL')}/pods`, {
       fixture: 'getPods.json',
     });
 
     cy.visit('/podInfo/Pod1');
-  });
 
-  it('Displays new member when added', () => {
-    cy.intercept(`${Cypress.env('API_URL')}/pods/member`, {
+    cy.intercept('POST', `${Cypress.env('API_URL')}/pods/member`, {
       fixture: 'addAnotherPodMember.json',
     });
 

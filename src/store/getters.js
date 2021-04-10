@@ -18,19 +18,6 @@ const getters = {
     state.pods.filter((pod) =>
       pod.filter((podInfo) => podInfo.name === name)
     )[0] ?? [],
-  getPodSpellTableUrlByName: (state) => (name) => {
-    console.log(name);
-    console.log(
-      state.pods.filter((pod) =>
-        pod.filter((podInfo) => podInfo.name === name)
-      )[0]?.spellTableUrl
-    );
-    return (
-      state.pods.filter((pod) =>
-        pod.filter((podInfo) => podInfo.name === name)
-      )[0]?.spellTableUrl ?? ''
-    );
-  },
 };
 
 export default getters;

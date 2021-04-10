@@ -12,21 +12,11 @@
             name="podName"
             label="Pod Name"
           />
-          <TextInput
-            type="text"
-            :onChange="onChange"
-            :value="spellTableUrl"
-            name="spellTableUrl"
-            label="Spell Table Link"
-          />
           <Button type="submit"> Confirm </Button>
         </form>
       </div>
       <div v-else>
-        <AddInitialPodMemberForm
-          :podName="podName"
-          :spellTableUrl="spellTableUrl"
-        />
+        <AddInitialPodMemberForm :podName="podName" />
       </div>
     </main>
   </PageLayout>
@@ -50,7 +40,6 @@ export default {
   setup() {
     const state = reactive({
       podName: '',
-      spellTableUrl: '',
       isConfirmed: false,
       errorMessage: '',
     });
@@ -61,8 +50,8 @@ export default {
 
     const onSubmit = () => {
       state.errorMessage = '';
-      if (state.podName.length === 0 || state.spellTableUrl.length === 0) {
-        state.errorMessage = 'Please enter information in both fields!';
+      if (state.podName.length === 0) {
+        state.errorMessage = 'Please enter the name of the pod!';
         return;
       }
       state.isConfirmed = true;
