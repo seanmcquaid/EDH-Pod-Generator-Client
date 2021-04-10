@@ -14,7 +14,7 @@ describe('Add Pod Page', () => {
     );
   });
 
-  it('Add pod member form displays once the name and spell table link is confirmed', () => {
+  it('Add pod member form displays once the name is confirmed', () => {
     cy.get('[data-testid="Pod Name"]').type('Pod #1');
     cy.get('button').click();
 
@@ -25,14 +25,14 @@ describe('Add Pod Page', () => {
     cy.get('[data-testid="Pod Name"]').type('Pod #1');
     cy.get('button').click();
 
-    cy.intercept(`${Cypress.env('API_URL')}/pods/member`, {
+    cy.intercept('POST', `${Cypress.env('API_URL')}/pods/member`, {
       fixture: 'addOnePodMember.json',
     });
 
     cy.get('[data-testid=Name]').type('Sean');
     cy.get('[data-testid=Email]').type('sean@mail.com');
 
-    cy.intercept(`${Cypress.env('API_URL')}/pods`, {
+    cy.intercept('GET', `${Cypress.env('API_URL')}/pods`, {
       fixture: 'getPods.json',
     });
 

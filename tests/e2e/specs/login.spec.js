@@ -8,7 +8,7 @@ describe('Login page', () => {
     cy.get('[data-testid=Username]').type('username here');
     cy.get('[data-testid=Password]').type('password');
 
-    cy.intercept(`${Cypress.env('API_URL')}/users/login`, {
+    cy.intercept('POST', `${Cypress.env('API_URL')}/users/login`, {
       fixture: 'login.json',
     });
 

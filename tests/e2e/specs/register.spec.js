@@ -22,7 +22,7 @@ describe('Register page', () => {
     cy.get('[data-testid=Password]').type('password');
     cy.get('[data-testid="Confirm Password"]').type('password');
 
-    cy.intercept(`${Cypress.env('API_URL')}/users/register`, {
+    cy.intercept('POST', `${Cypress.env('API_URL')}/users/register`, {
       fixture: 'register.json',
     });
 
