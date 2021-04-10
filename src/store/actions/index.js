@@ -55,16 +55,12 @@ const actions = {
         commit(SET_NOT_LOADING);
       });
   },
-  addPodMember: (
-    { commit, state },
-    { name, member, memberEmail, spellTableUrl }
-  ) => {
+  addPodMember: ({ commit, state }, { name, member, memberEmail }) => {
     commit(SET_LOADING);
     const body = {
       name,
       member,
       memberEmail,
-      spellTableUrl,
     };
     const config = {
       headers: {

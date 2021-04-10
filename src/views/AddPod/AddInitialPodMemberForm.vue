@@ -1,6 +1,5 @@
 <template>
   <span>{{ podName }}</span>
-  <span>{{ spellTableUrl }}</span>
   <form @submit.prevent="onSubmit" data-testid="AddPodMemberForm">
     <TextInput
       type="text"
@@ -48,7 +47,6 @@ export default {
     const store = useStore();
     const router = useRouter();
     const name = computed(() => props.podName);
-    const spellTableUrl = computed(() => props.spellTableUrl);
     const state = reactive({
       memberName: '',
       memberEmail: '',
@@ -63,7 +61,6 @@ export default {
         name: name.value,
         member: state.memberName,
         memberEmail: state.memberEmail,
-        spellTableUrl: spellTableUrl.value,
       };
       store.dispatch(ADD_POD_MEMBER, payload).then(() => {
         router.push(`/podInfo/${props.podName}`);
