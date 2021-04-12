@@ -6,6 +6,7 @@ import UserHome from '../views/UserHome.vue';
 import AddPod from '../views/AddPod/AddPod.vue';
 import PodInfo from '../views/PodInfo/PodInfo.vue';
 import store from '../store';
+import Pods from '../views/Pods.vue';
 import { CLEAR_ERROR_MESSAGE } from '../store/actions/types';
 
 const routes = [
@@ -38,6 +39,11 @@ const routes = [
     path: '/podInfo/:name',
     name: 'PodInfo',
     component: PodInfo,
+  },
+  {
+    path: '/pods',
+    name: 'Pods',
+    component: Pods,
   },
 ];
 

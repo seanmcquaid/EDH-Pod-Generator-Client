@@ -5,7 +5,26 @@ describe('Getters', () => {
     isLoading: true,
     isAuthenticated: true,
     token: 'token',
-    pods: [],
+    pods: [
+      [
+        {
+          id: 1,
+          owner: 'sean',
+          member: 'Sean',
+          memberEmail: 'sean@mail.com',
+          name: 'Pod1',
+        },
+      ],
+      [
+        {
+          id: 2,
+          owner: 'sean',
+          member: 'Terell',
+          memberEmail: 'terell@mail.com',
+          name: 'Pod2',
+        },
+      ],
+    ],
     errorMessage: 'error here',
   };
 
@@ -22,10 +41,26 @@ describe('Getters', () => {
   });
 
   it('getPods', () => {
-    expect(getters.getPods(state)).toEqual([]);
+    expect(getters.getPods(state).length).toEqual(2);
   });
 
   it('getErrorMessage', () => {
     expect(getters.getErrorMessage(state)).toEqual('error here');
+  });
+
+  it('getPodByName', () => {
+    expect(getters.getPodByName(state)('Pod1')).toEqual([
+      {
+        id: 1,
+        member: 'Sean',
+        memberEmail: 'sean@mail.com',
+        name: 'Pod1',
+        owner: 'sean',
+      },
+    ]);
+  });
+
+  it('getPodNames', () => {
+    expect(getters.getPodNames(state)).toEqual(['Pod1', 'Pod2']);
   });
 });
