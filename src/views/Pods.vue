@@ -13,16 +13,21 @@
 </template>
 
 <script>
-import { computed } from '@vue/runtime-core';
+import { computed, onMounted } from '@vue/runtime-core';
 import { useStore } from 'vuex';
 import LinkButton from '../components/LinkButton.vue';
 import H1 from '../components/Typography/H1.vue';
 import PageLayout from '../layouts/PageLayout.vue';
+import { GET_PODS } from '../store/actions/types';
 export default {
   components: { PageLayout, H1, LinkButton },
   setup() {
     const store = useStore();
     const podNames = computed(() => store.getters.getPodNames);
+
+    onMounted(() => {
+      store.dispatch(GET_PODS);
+    });
 
     return {
       podNames,
