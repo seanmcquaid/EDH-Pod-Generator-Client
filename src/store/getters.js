@@ -18,6 +18,7 @@ const getters = {
     state.pods.filter((pod) =>
       pod.filter((podInfo) => podInfo.name === name)
     )[0] ?? [],
+  getPodNames: (state) => state?.pods?.map((pod) => pod[0].name) ?? [],
 };
 
 export default getters;
