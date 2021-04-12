@@ -3,7 +3,11 @@
     <header><H1>Pods</H1></header>
     <main>
       <ul>
-        <li v-for="(podName, index) of podNames" :key="index">
+        <li
+          v-for="(podName, index) of podNames"
+          :key="index"
+          :data-testid="podName"
+        >
           <span>{{ podName }}</span>
           <LinkButton :route="`/podInfo/${podName}`">Pod Info</LinkButton>
         </li>
