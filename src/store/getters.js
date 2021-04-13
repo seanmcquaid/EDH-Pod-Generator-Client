@@ -19,7 +19,7 @@ const getters = {
       podName: '',
       podMembers: [],
     },
-  getPodNames: (state) => state?.pods?.map((pod) => pod.name) ?? [],
+  getPodNames: (state) => state?.pods?.map((pod) => pod.podName) ?? [],
 };
 
 export default getters;
