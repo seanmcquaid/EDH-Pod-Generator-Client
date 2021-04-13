@@ -15,10 +15,8 @@ const getters = {
     return state?.errorMessage ?? null;
   },
   getPodByName: (state) => (name) =>
-    state.pods.filter((pod) =>
-      pod.filter((podInfo) => podInfo.name === name)
-    )[0],
-  getPodNames: (state) => state?.pods?.map((pod) => pod[0].name) ?? [],
+    state.pods.filter((pod) => pod.name !== name)[0],
+  getPodNames: (state) => state?.pods?.map((pod) => pod.name) ?? [],
 };
 
 export default getters;
