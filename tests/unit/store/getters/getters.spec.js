@@ -6,24 +6,25 @@ describe('Getters', () => {
     isAuthenticated: true,
     token: 'token',
     pods: [
-      [
-        {
-          id: 1,
-          owner: 'sean',
-          member: 'Sean',
-          memberEmail: 'sean@mail.com',
-          name: 'Pod1',
-        },
-      ],
-      [
-        {
-          id: 2,
-          owner: 'sean',
-          member: 'Terell',
-          memberEmail: 'terell@mail.com',
-          name: 'Pod2',
-        },
-      ],
+      {
+        podName: 'Pod1',
+        podMembers: [
+          {
+            id: 1,
+            owner: 'sean',
+            member: 'Sean',
+            memberEmail: 'sean@mail.com',
+            name: 'Pod1',
+          },
+          {
+            id: 2,
+            owner: 'sean',
+            member: 'Terell',
+            memberEmail: 'terell@mail.com',
+            name: 'Pod1',
+          },
+        ],
+      },
     ],
     errorMessage: 'error here',
   };
@@ -41,7 +42,7 @@ describe('Getters', () => {
   });
 
   it('getPods', () => {
-    expect(getters.getPods(state).length).toEqual(2);
+    expect(getters.getPods(state).length).toEqual(1);
   });
 
   it('getErrorMessage', () => {
@@ -49,18 +50,28 @@ describe('Getters', () => {
   });
 
   it('getPodByName', () => {
-    expect(getters.getPodByName(state)('Pod1')).toEqual([
-      {
-        id: 1,
-        member: 'Sean',
-        memberEmail: 'sean@mail.com',
-        name: 'Pod1',
-        owner: 'sean',
-      },
-    ]);
+    expect(getters.getPodByName(state)('Pod1')).toEqual({
+      podName: 'Pod1',
+      podMembers: [
+        {
+          id: 1,
+          owner: 'sean',
+          member: 'Sean',
+          memberEmail: 'sean@mail.com',
+          name: 'Pod1',
+        },
+        {
+          id: 2,
+          owner: 'sean',
+          member: 'Terell',
+          memberEmail: 'terell@mail.com',
+          name: 'Pod1',
+        },
+      ],
+    });
   });
 
   it('getPodNames', () => {
-    expect(getters.getPodNames(state)).toEqual(['Pod1', 'Pod2']);
+    expect(getters.getPodNames(state)).toEqual(['Pod1']);
   });
 });

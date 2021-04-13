@@ -1,20 +1,23 @@
 {
   "pods": [
-    [
-      {
-        "id": 1,
-        "owner": "sean",
-        "member": "Sean",
-        "memberEmail": "sean@mail.com",
-        "name": "Pod1"
-      },
-      {
-        "id": 2,
-        "owner": "sean",
-        "member": "Terell",
-        "memberEmail": "terell@mail.com",
-        "name": "Pod1"
-      }
-    ]
+    {
+      "podName": "Pod1",
+      "podMembers": [
+        {
+          "id": 1,
+          "owner": "sean",
+          "member": "Sean",
+          "memberEmail": "sean@mail.com",
+          "name": "Pod1"
+        },
+        {
+          "id": 2,
+          "owner": "sean",
+          "member": "Terell",
+          "memberEmail": "terell@mail.com",
+          "name": "Pod1"
+        }
+      ]
+    }
   ]
 }
