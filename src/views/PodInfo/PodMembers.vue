@@ -24,7 +24,8 @@ export default {
     const podName = router.currentRoute.value.params.name;
 
     const store = useStore();
-    const podMembers = computed(() => store.getters.getPodByName(podName));
+    const podInfo = computed(() => store.getters.getPodByName(podName));
+    const podMembers = computed(() => podInfo.value.podMembers);
 
     onMounted(() => {
       store.dispatch(GET_PODS);
