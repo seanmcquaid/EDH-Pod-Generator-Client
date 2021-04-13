@@ -1,13 +1,16 @@
 {
   "pods": [
-    [
-      {
-        "id": 1,
-        "owner": "sean",
-        "member": "Sean",
-        "memberEmail": "sean@mail.com",
-        "name": "Pod1"
-      }
-    ]
+    {
+      "name": "Pod1",
+      "podMembers": [
+        {
+          "id": 1,
+          "owner": "sean",
+          "member": "Sean",
+          "memberEmail": "sean@mail.com",
+          "name": "Pod1"
+        }
+      ]
+    }
   ]
 }
