@@ -25,6 +25,7 @@ export default {
 
     const store = useStore();
     const podInfo = computed(() => store.getters.getPodByName(podName));
+    console.log(podInfo);
     const podMembers = computed(() => podInfo.value.podMembers);
 
     onMounted(() => {
