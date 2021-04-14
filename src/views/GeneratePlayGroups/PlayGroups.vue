@@ -1,7 +1,11 @@
 <template>
-  <span>{{ errorMessage }}</span>
+  <span data-testid="errorMessage">{{ errorMessage }}</span>
   <ul>
-    <li v-for="(playGroup, index) of playGroups" :key="index">
+    <li
+      v-for="(playGroup, index) of playGroups"
+      :key="index"
+      :data-testid="`playGroup${index + 1}`"
+    >
       <span>Play Group #{{ index + 1 }}</span>
       <ul>
         <li
