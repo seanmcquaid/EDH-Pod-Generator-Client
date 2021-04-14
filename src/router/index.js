@@ -47,7 +47,7 @@ const routes = [
     component: Pods,
   },
   {
-    path: '/generatePlayGroups',
+    path: '/generatePlayGroups/:name',
     name: 'Generate Play Groups',
     component: GeneratePlayGroups,
   },

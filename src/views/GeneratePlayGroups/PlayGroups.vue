@@ -20,8 +20,8 @@
       type="text"
       :onChange="onChange"
       :value="spellTableUrls[index]"
-      :name="`textInput${index}`"
-      :label="`Spell Table Url For Play Group #${index + 1}`"
+      :name="`spellTableUrl${index}`"
+      :label="`Spell Table Url For Play Group #${index}`"
     />
     <Button type="submit">Contact Pods</Button>
   </form>
@@ -74,7 +74,9 @@ export default {
         return;
       }
       const body = {
-        spellTableUrls,
+        spellTableUrls: Object.keys(spellTableUrls).map(
+          (spellTableUrl) => spellTableUrls[spellTableUrl]
+        ),
         playGroups: state.playGroups,
       };
       const config = {
