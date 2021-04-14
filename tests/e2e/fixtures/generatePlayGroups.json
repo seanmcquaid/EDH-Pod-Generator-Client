@@ -1,0 +1,26 @@
+{
+  "playGroups": [
+    {
+      "playGroupMembers": [
+        {
+          "id": 1,
+          "owner": "sean",
+          "member": "Sean",
+          "memberEmail": "sean@mail.com",
+          "name": "Pod1"
+        }
+      ]
+    },
+    {
+      "playGroupMembers": [
+        {
+          "id": 2,
+          "owner": "sean",
+          "member": "Terrell",
+          "memberEmail": "Terrell@mail.com",
+          "name": "Pod1"
+        }
+      ]
+    }
+  ]
+}
