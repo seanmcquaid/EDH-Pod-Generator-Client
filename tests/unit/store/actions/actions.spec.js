@@ -125,7 +125,60 @@ describe('Actions', () => {
     expect(result.pods).toEqual(pods);
   });
 
-  it('deletePodMember', () => {});
+  it('deletePodMember', async () => {
+    const pods = [
+      {
+        podName: 'Pod1',
+        podMembers: [
+          {
+            id: 1,
+            owner: 'sean',
+            member: 'Sean',
+            memberEmail: 'sean@mail.com',
+            name: 'Pod1',
+          },
+        ],
+      },
+    ];
+    jest.spyOn(axios, 'delete').mockResolvedValueOnce({
+      data: {
+        pods,
+      },
+    });
 
-  it('deletePod', () => {});
+    const commit = jest.fn();
+
+    const state = {
+      token: 'token',
+    };
+
+    const result = await actions.deletePodMember(
+      { commit, state },
+      { memberName: 'Terrell' }
+    );
+
+    expect(result.pods).toEqual(pods);
+  });
+
+  it('deletePod', async () => {
+    const pods = [];
+    jest.spyOn(axios, 'delete').mockResolvedValueOnce({
+      data: {
+        pods,
+      },
+    });
+
+    const commit = jest.fn();
+
+    const state = {
+      token: 'token',
+    };
+
+    const result = await actions.deletePod(
+      { commit, state },
+      { podName: 'Pod1' }
+    );
+
+    expect(result.pods).toEqual(pods);
+  });
 });
