@@ -9,7 +9,7 @@
       <span> {{ JSON.stringify(podMemberInfo) }} </span>
       <Button
         type="button"
-        :onClick="deleteButtonOnClick(podMemberInfo.member)"
+        :onClick="() => deleteButtonOnClick(podMemberInfo.member)"
       >
         Delete
       </Button>
