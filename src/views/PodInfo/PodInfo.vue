@@ -16,8 +16,8 @@ import AddPodMemberForm from './AddPodMemberForm.vue';
 import PodMembers from './PodMembers.vue';
 import Button from '../../components/Button.vue';
 import { useRouter } from 'vue-router';
-import axios from 'axios';
 import { useStore } from 'vuex';
+import { DELETE_POD } from '../../store/actions/types';
 
 export default {
   components: {
@@ -33,16 +33,7 @@ export default {
     const podName = router.currentRoute.value.params.name;
 
     const onClick = () => {
-      const config = {
-        headers: {
-          Authorization: store.state.token,
-        },
-      };
-      axios
-        .delete(`${process.env.VUE_APP_API_URL}/pods/${podName}`, config)
-        .then(() => {
-          router.push('/userHome');
-        });
+      store.dispatch(DELETE_POD, { podName });
     };
 
     return {

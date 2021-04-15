@@ -38,7 +38,7 @@ export default {
       store.dispatch(GET_PODS);
     });
 
-    const deleteButtonOnClick = () => {};
+    const deleteButtonOnClick = (memberName) => {};
 
     return {
       podMembers,
