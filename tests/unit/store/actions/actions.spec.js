@@ -43,12 +43,23 @@ describe('Actions', () => {
   it('addPodMember', async () => {
     const pods = [
       {
-        id: 1,
-        owner: 'sean',
-        member: 'terrell',
-        member_email: 'email@gmail.com',
-        spell_table_url: 'www.example.com',
-        name: 'Pod Name',
+        podName: 'Pod1',
+        podMembers: [
+          {
+            id: 1,
+            owner: 'sean',
+            member: 'Sean',
+            memberEmail: 'sean@mail.com',
+            name: 'Pod1',
+          },
+          {
+            id: 2,
+            owner: 'sean',
+            member: 'Terell',
+            memberEmail: 'terell@mail.com',
+            name: 'Pod1',
+          },
+        ],
       },
     ];
     jest.spyOn(axios, 'post').mockResolvedValueOnce({
@@ -75,7 +86,44 @@ describe('Actions', () => {
     expect(result.pods).toEqual(pods);
   });
 
-  it('getPods', () => {});
+  it('getPods', async () => {
+    const pods = [
+      {
+        podName: 'Pod1',
+        podMembers: [
+          {
+            id: 1,
+            owner: 'sean',
+            member: 'Sean',
+            memberEmail: 'sean@mail.com',
+            name: 'Pod1',
+          },
+          {
+            id: 2,
+            owner: 'sean',
+            member: 'Terell',
+            memberEmail: 'terell@mail.com',
+            name: 'Pod1',
+          },
+        ],
+      },
+    ];
+    jest.spyOn(axios, 'get').mockResolvedValueOnce({
+      data: {
+        pods,
+      },
+    });
+
+    const commit = jest.fn();
+
+    const state = {
+      token: 'token',
+    };
+
+    const result = await actions.getPods({ commit, state });
+
+    expect(result.pods).toEqual(pods);
+  });
 
   it('deletePodMember', () => {});
 
