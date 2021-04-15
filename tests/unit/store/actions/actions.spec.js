@@ -74,4 +74,10 @@ describe('Actions', () => {
 
     expect(result.pods).toEqual(pods);
   });
+
+  it('getPods', () => {});
+
+  it('deletePodMember', () => {});
+
+  it('deletePod', () => {});
 });
