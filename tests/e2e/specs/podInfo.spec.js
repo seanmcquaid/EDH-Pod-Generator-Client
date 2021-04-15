@@ -13,7 +13,7 @@ describe('Pod Info Page', () => {
     cy.get('[data-testid=Name]').type('Terell');
     cy.get('[data-testid=Email]').type('terell@mail.com');
 
-    cy.get('button').click();
+    cy.get('[data-testid=AddPodMemberForm] > button').click();
 
     cy.get('[data-testid=Terell] > span').should('be.visible');
   });
