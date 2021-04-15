@@ -31,7 +31,7 @@ describe('Pod Info Page', () => {
       fixture: 'deletePod.json',
     });
 
-    cy.get('main > [data-v-5dad02cf=""]').click();
+    cy.get('[data-testid=deletePodButton]').click();
 
     cy.get('h1').should('have.text', 'User Home');
   });

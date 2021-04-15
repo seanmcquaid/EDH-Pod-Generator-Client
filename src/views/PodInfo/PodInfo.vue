@@ -4,7 +4,9 @@
     <main>
       <AddPodMemberForm />
       <PodMembers />
-      <Button type="button" :onClick="onClick">Delete Pod</Button>
+      <Button type="button" :onClick="onClick" data-testid="deletePodButton">
+        Delete Pod
+      </Button>
     </main>
   </PageLayout>
 </template>
