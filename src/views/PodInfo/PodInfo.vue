@@ -33,7 +33,9 @@ export default {
     const podName = router.currentRoute.value.params.name;
 
     const onClick = () => {
-      store.dispatch(DELETE_POD, { podName });
+      store.dispatch(DELETE_POD, { podName }).then(() => {
+        router.push('/userHome');
+      });
     };
 
     return {

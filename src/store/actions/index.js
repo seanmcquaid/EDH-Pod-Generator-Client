@@ -113,7 +113,34 @@ const actions = {
         commit(SET_NOT_LOADING);
       });
   },
-  deletePodMember: ({ commit, state }) => {},
+  deletePodMember: ({ commit, state }, { memberName }) => {
+    commit(SET_LOADING);
+    const config = {
+      headers: {
+        Authorization: state.token,
+      },
+    };
+    return axios
+      .delete(
+        `${process.env.VUE_APP_API_URL}/pods/member/${memberName}`,
+        config
+      )
+      .then(({ data }) => {
+        const { pods } = data;
+        commit(PODS_SUCCESS, { pods });
+        return Promise.resolve({ pods });
+      })
+      .catch((err) => {
+        const errorMessage =
+          err?.response?.data?.errorMessage ??
+          'There was an issue deleting this pod member';
+        commit(SET_ERROR_MESSAGE, { errorMessage });
+        return Promise.reject(Object.entries(err));
+      })
+      .finally(() => {
+        commit(SET_NOT_LOADING);
+      });
+  },
   deletePod: ({ commit, state }, { podName }) => {
     commit(SET_LOADING);
     const config = {
