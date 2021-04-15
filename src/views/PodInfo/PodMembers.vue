@@ -7,6 +7,7 @@
       :data-testid="podMemberInfo.member"
     >
       <span> {{ JSON.stringify(podMemberInfo) }} </span>
+      <Button type="button">Delete</Button>
     </li>
   </ul>
 </template>
@@ -17,8 +18,9 @@ import { useStore } from 'vuex';
 import { GET_PODS } from '../../store/actions/types';
 import { useRouter } from 'vue-router';
 import LinkButton from '../../components/LinkButton.vue';
+import Button from '../../components/Button.vue';
 export default {
-  components: { LinkButton },
+  components: { LinkButton, Button },
   setup() {
     const router = useRouter();
     const podName = router.currentRoute.value.params.name;
