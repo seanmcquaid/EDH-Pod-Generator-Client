@@ -7,7 +7,12 @@
       :data-testid="podMemberInfo.member"
     >
       <span> {{ JSON.stringify(podMemberInfo) }} </span>
-      <Button type="button">Delete</Button>
+      <Button
+        type="button"
+        :onClick="deleteButtonOnClick(podMemberInfo.member)"
+      >
+        Delete
+      </Button>
     </li>
   </ul>
 </template>
@@ -33,9 +38,12 @@ export default {
       store.dispatch(GET_PODS);
     });
 
+    const deleteButtonOnClick = () => {};
+
     return {
       podMembers,
       podName,
+      deleteButtonOnClick,
     };
   },
 };
