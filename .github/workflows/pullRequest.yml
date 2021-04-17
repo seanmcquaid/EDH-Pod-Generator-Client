@@ -24,7 +24,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         env:
-          CYPRESS_VUE_APP_TESTING: true
+          VUE_APP_TESTING: true
         with:
           start: yarn serve
           wait-on: http://localhost:8080/
