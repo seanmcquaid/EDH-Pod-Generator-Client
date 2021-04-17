@@ -26,6 +26,9 @@ const routes = [
     name: 'Login',
     component: Login,
   },
+];
+
+const protectedRoutes = [
   {
     path: '/userHome',
     name: 'UserHome',
@@ -55,7 +58,23 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes,
+  routes: [...routes, ...protectedRoutes],
+});
+
+const isProtectedName = (name) =>
+  protectedRoutes.map((protectedRoute) => protectedRoute.name).includes(name);
+
+router.beforeEach((to, from, next) => {
+  console.log(process.env);
+  if (
+    isProtectedName(to.name) &&
+    !store.state.isAuthenticated &&
+    !process.env.VUE_APP_TESTING
+  ) {
+    next({ name: 'Home' });
+  } else {
+    next();
+  }
 });
 
 router.afterEach(() => {

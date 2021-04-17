@@ -23,6 +23,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Cypress run
         uses: cypress-io/github-action@v2
+        env:
+          VUE_APP_TESTING: true
         with:
           start: yarn serve
           wait-on: http://localhost:8080/
