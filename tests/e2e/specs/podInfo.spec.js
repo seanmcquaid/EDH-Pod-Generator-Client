@@ -43,9 +43,13 @@ describe('Pod Info Page', () => {
 
     cy.visit('/podInfo/Pod1');
 
-    cy.intercept('DELETE', `${Cypress.env('API_URL')}/pods/member/Terell`, {
-      fixture: 'deletePodMember.json',
-    });
+    cy.intercept(
+      'DELETE',
+      `${Cypress.env('API_URL')}/pods/Pod1/member/Terell`,
+      {
+        fixture: 'deletePodMember.json',
+      }
+    );
 
     cy.get('[data-testid=Terell] > button').click();
 

@@ -113,7 +113,7 @@ const actions = {
         commit(SET_NOT_LOADING);
       });
   },
-  deletePodMember: ({ commit, state }, { memberName }) => {
+  deletePodMember: ({ commit, state }, { memberName, podName }) => {
     commit(SET_LOADING);
     const config = {
       headers: {
@@ -122,7 +122,7 @@ const actions = {
     };
     return axios
       .delete(
-        `${process.env.VUE_APP_API_URL}/pods/member/${memberName}`,
+        `${process.env.VUE_APP_API_URL}/pods/${podName}/member/${memberName}`,
         config
       )
       .then(({ data }) => {
