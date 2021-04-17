@@ -39,7 +39,7 @@ export default {
     });
 
     const deleteButtonOnClick = (memberName) => {
-      store.dispatch(DELETE_POD_MEMBER, { memberName });
+      store.dispatch(DELETE_POD_MEMBER, { memberName, podName });
     };
 
     return {
