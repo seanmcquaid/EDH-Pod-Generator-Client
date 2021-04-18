@@ -21,7 +21,6 @@
   <div>
     <router-view />
   </div>
-  <footer>Footer here</footer>
 </template>
 
 <script>
