@@ -9,5 +9,6 @@ export default {};
 <style scoped>
 p {
   font-family: 'Quattrocento', serif;
+  color: rgb(38, 25, 17);
 }
 </style>

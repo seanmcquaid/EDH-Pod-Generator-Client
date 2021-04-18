@@ -9,5 +9,6 @@ export default {};
 <style scoped>
 h1 {
   font-family: 'Oswald', sans-serif;
+  color: rgb(38, 25, 17);
 }
 </style>
