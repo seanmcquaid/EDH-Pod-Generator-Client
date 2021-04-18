@@ -30,4 +30,18 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+header {
+  height: 20%;
+}
+main {
+  height: 80%;
+  padding: 1rem;
+}
+div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+</style>

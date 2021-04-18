@@ -18,9 +18,7 @@
       </li>
     </ul>
   </nav>
-  <div>
-    <router-view />
-  </div>
+  <router-view />
 </template>
 
 <script>
@@ -66,9 +64,5 @@ a {
   font-family: 'Quattrocento', serif;
   color: rgb(38, 25, 17);
   text-decoration: none;
-}
-
-div {
-  margin-top: 5.25rem;
 }
 </style>

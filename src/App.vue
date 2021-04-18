@@ -16,6 +16,8 @@ html,
 body,
 #app {
   min-height: 100vh;
+  height: 100%;
+  width: 100%;
 }
 body {
   height: 100%;
