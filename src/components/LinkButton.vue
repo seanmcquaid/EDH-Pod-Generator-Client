@@ -13,4 +13,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+a {
+  font-family: 'Quattrocento', serif;
+}
+</style>

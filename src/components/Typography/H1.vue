@@ -6,4 +6,8 @@
 export default {};
 </script>
 
-<style scoped></style>
+<style scoped>
+h1 {
+  font-family: 'Oswald', sans-serif;
+}
+</style>

@@ -38,4 +38,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+input {
+  font-family: 'Quattrocento', serif;
+}
+</style>
