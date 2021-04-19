@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="pageContainer">
     <slot />
   </div>
 </template>
@@ -9,7 +9,7 @@ export default {};
 </script>
 
 <style scoped>
-div {
+.pageContainer {
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -1,22 +1,24 @@
 <template>
-  <span data-testid="errorMessage">{{ errorMessage }}</span>
-  <ul>
-    <li
-      v-for="(playGroup, index) of playGroups"
-      :key="index"
-      :data-testid="`playGroup${index + 1}`"
-    >
-      <span>Play Group #{{ index + 1 }}</span>
-      <ul>
-        <li
-          v-for="playGroupMember of playGroup.playGroupMembers"
-          :key="playGroupMember.id"
-        >
-          {{ playGroupMember.member }}
-        </li>
-      </ul>
-    </li>
-  </ul>
+  <div>
+    <span data-testid="errorMessage">{{ errorMessage }}</span>
+    <ul>
+      <li
+        v-for="(playGroup, index) of playGroups"
+        :key="index"
+        :data-testid="`playGroup${index + 1}`"
+      >
+        <span>Play Group #{{ index + 1 }}</span>
+        <ul>
+          <li
+            v-for="playGroupMember of playGroup.playGroupMembers"
+            :key="playGroupMember.id"
+          >
+            {{ playGroupMember.member }}
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -65,4 +67,29 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  width: 100%;
+}
+li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  margin: 1rem;
+  border: 2px solid rgb(38, 25, 17);
+  border-radius: 8px;
+}
+span {
+  margin: 0.5rem;
+}
+</style>

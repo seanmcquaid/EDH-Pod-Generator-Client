@@ -71,11 +71,15 @@ ul {
 }
 li {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   padding: 1rem;
   margin: 1rem;
   border: 2px solid rgb(38, 25, 17);
   border-radius: 8px;
+}
+span {
+  margin: 0.5rem;
 }
 </style>
