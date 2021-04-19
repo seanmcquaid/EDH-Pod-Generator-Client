@@ -66,4 +66,15 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+div {
+  display: flex;
+  flex-direction: column;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+</style>
