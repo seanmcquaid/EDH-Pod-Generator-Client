@@ -1,5 +1,7 @@
 <template>
-  <LinkButton :route="`/generatePods/${podName}`">Generate Pods</LinkButton>
+  <LinkButton :route="`/generatePlayGroups/${podName}`">
+    Generate Play Groups
+  </LinkButton>
   <ul>
     <li
       v-for="(podMemberInfo, key) of podMembers"

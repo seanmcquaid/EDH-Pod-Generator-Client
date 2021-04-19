@@ -65,7 +65,6 @@ const isProtectedName = (name) =>
   protectedRoutes.map((protectedRoute) => protectedRoute.name).includes(name);
 
 router.beforeEach((to, from, next) => {
-  console.log(process.env);
   if (
     isProtectedName(to.name) &&
     !store.state.isAuthenticated &&
