@@ -1,22 +1,24 @@
 <template>
-  <span>{{ podName }}</span>
-  <form @submit.prevent="onSubmit" data-testid="AddPodMemberForm">
-    <TextInput
-      type="text"
-      :onChange="onChange"
-      :value="memberName"
-      name="memberName"
-      label="Name"
-    />
-    <TextInput
-      type="text"
-      :onChange="onChange"
-      :value="memberEmail"
-      name="memberEmail"
-      label="Email"
-    />
-    <Button type="submit">Add Member</Button>
-  </form>
+  <div>
+    <span>{{ podName }}</span>
+    <form @submit.prevent="onSubmit" data-testid="AddPodMemberForm">
+      <TextInput
+        type="text"
+        :onChange="onChange"
+        :value="memberName"
+        name="memberName"
+        label="Name"
+      />
+      <TextInput
+        type="text"
+        :onChange="onChange"
+        :value="memberEmail"
+        name="memberEmail"
+        label="Email"
+      />
+      <Button type="submit">Add Member</Button>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -58,10 +60,26 @@ export default {
       ...toRefs(state),
       onChange,
       onSubmit,
-      name,
+      podName: name,
     };
   },
 };
 </script>
 
-<style></style>
+<style scoped>
+span {
+  padding: 1rem;
+}
+div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+</style>
