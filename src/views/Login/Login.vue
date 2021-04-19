@@ -16,4 +16,12 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+header {
+  height: 20%;
+}
+main {
+  height: 80%;
+  padding: 1rem;
+}
+</style>

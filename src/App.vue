@@ -25,5 +25,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: rgb(249, 246, 239);
+  font-family: 'Quattrocento', serif;
+  color: rgb(38, 25, 17);
 }
 </style>

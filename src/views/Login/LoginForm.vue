@@ -9,13 +9,15 @@
       type="text"
       name="username"
       label="Username"
+      placeholder="Enter your username"
     />
     <TextInput
       :value="password"
       :onChange="onChange"
-      type="text"
+      type="password"
       name="password"
       label="Password"
+      placeholder="Enter your password"
     />
     <Button type="submit">Submit</Button>
   </form>
@@ -71,4 +73,11 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+</style>
