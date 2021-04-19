@@ -19,6 +19,7 @@ body,
   height: 100%;
   width: 100%;
 }
+
 body {
   height: 100%;
   width: 100%;
@@ -27,5 +28,13 @@ body {
   background-color: rgb(249, 246, 239);
   font-family: 'Quattrocento', serif;
   color: rgb(38, 25, 17);
+}
+
+header {
+  height: 20%;
+}
+main {
+  height: 80%;
+  padding: 1rem;
 }
 </style>
