@@ -40,4 +40,21 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  width: 100%;
+}
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  margin: 1rem;
+
+  border: 2px solid rgb(38, 25, 17);
+  border-radius: 8px;
+}
+</style>
