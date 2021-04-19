@@ -29,8 +29,8 @@ describe('Add Pod Page', () => {
       fixture: 'addOnePodMember.json',
     });
 
-    cy.get('[data-testid=Name]').type('Sean');
-    cy.get('[data-testid=Email]').type('sean@mail.com');
+    cy.get('[data-testid="Member Name"]').type('Sean');
+    cy.get('[data-testid="Member Email"]').type('sean@mail.com');
 
     cy.intercept('GET', `${Cypress.env('API_URL')}/pods`, {
       fixture: 'getPods.json',

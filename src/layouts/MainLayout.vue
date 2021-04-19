@@ -19,7 +19,6 @@
     </ul>
   </nav>
   <router-view />
-  <footer>Footer here</footer>
 </template>
 
 <script>
@@ -37,4 +36,33 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+nav {
+  position: fixed;
+  width: 100%;
+  padding: 1rem;
+  top: 0;
+  left: 0;
+  background-color: rgb(191, 175, 160);
+}
+
+ul {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  list-style: none;
+}
+
+li {
+  margin-right: 1.5rem;
+}
+
+a {
+  font-family: 'Quattrocento', serif;
+  color: rgb(38, 25, 17);
+  text-decoration: none;
+}
+</style>

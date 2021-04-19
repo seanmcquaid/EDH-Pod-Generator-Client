@@ -1,20 +1,25 @@
 <template>
-  <LinkButton :route="`/generatePods/${podName}`">Generate Pods</LinkButton>
-  <ul>
-    <li
-      v-for="(podMemberInfo, key) of podMembers"
-      :key="key"
-      :data-testid="podMemberInfo.member"
-    >
-      <span> {{ JSON.stringify(podMemberInfo) }} </span>
-      <Button
-        type="button"
-        :onClick="() => deleteButtonOnClick(podMemberInfo.member)"
+  <div>
+    <LinkButton :route="`/generatePlayGroups/${podName}`">
+      Generate Play Groups
+    </LinkButton>
+    <ul>
+      <li
+        v-for="(podMemberInfo, key) of podMembers"
+        :key="key"
+        :data-testid="podMemberInfo.member"
       >
-        Delete
-      </Button>
-    </li>
-  </ul>
+        <span> Name : {{ podMemberInfo.name }} </span>
+        <span>Email : {{ podMemberInfo.memberEmail }}</span>
+        <Button
+          type="button"
+          :onClick="() => deleteButtonOnClick(podMemberInfo.member)"
+        >
+          Delete
+        </Button>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -51,4 +56,30 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  width: 100%;
+}
+li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  margin: 1rem;
+  border: 2px solid rgb(38, 25, 17);
+  border-radius: 8px;
+}
+span {
+  margin: 0.5rem;
+}
+</style>
