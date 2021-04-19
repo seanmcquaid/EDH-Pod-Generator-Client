@@ -25,4 +25,9 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+main {
+  display: flex;
+  flex-direction: column;
+}
+</style>
