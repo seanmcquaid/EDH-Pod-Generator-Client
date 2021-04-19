@@ -1,6 +1,6 @@
-# edh-pod-generator-client
+# EDH Pod Generator - Client
 
-## Project setup
+## Project Setup
 
 ```
 yarn install
@@ -30,12 +30,20 @@ yarn test:unit
 yarn test:e2e
 ```
 
-### Lints and fixes files
+##
 
-```
-yarn lint
-```
+## Architecture
 
-### Customize configuration
+- Vue.js
+- Vuex
+- Vue Router
 
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Testing Strategy
+
+### E2E Testing
+
+Cypress.io was used for E2E testing for actually testing user flows. I set up mocks with appropriate fixture files associated with them as to remove any dependency on the back end. This helped create very stable tests that helped while doing refactoring.
+
+### Unit Testing
+
+I used Jest to unit test primarily my associated store functions. I felt as though the majority of user behavior was covered from my E2E tests.
